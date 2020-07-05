@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MapAndLocationManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="hWr-dj-Tml">
+                                <rect key="frame" x="0.0" y="61" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aIa-WF-UMb">
+                                <rect key="frame" x="0.0" y="117" width="414" height="779"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aIa-WF-UMb" firstAttribute="top" secondItem="hWr-dj-Tml" secondAttribute="bottom" id="6dd-RG-FjI"/>
+                            <constraint firstItem="hWr-dj-Tml" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CK4-gA-pJu"/>
+                            <constraint firstItem="aIa-WF-UMb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FM2-Yg-uj8"/>
+                            <constraint firstItem="aIa-WF-UMb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KDF-GM-qgP"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="aIa-WF-UMb" secondAttribute="bottom" constant="-34" id="iBZ-Br-QuL"/>
+                            <constraint firstItem="hWr-dj-Tml" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="17" id="kAC-zg-EsY"/>
+                            <constraint firstItem="hWr-dj-Tml" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="t84-0D-oJQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="aIa-WF-UMb" id="Eru-NR-oGi"/>
+                        <outlet property="searchBar" destination="hWr-dj-Tml" id="gP4-gu-hgM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28.985507246376812" y="94.419642857142847"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

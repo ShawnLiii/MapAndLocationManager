@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D6B11D424B01EFB0059B792 /* PlaceMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6B11D324B01EFB0059B792 /* PlaceMark.swift */; };
 		3DA4B76424AA802D007E4B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B76324AA802D007E4B01 /* AppDelegate.swift */; };
 		3DA4B76624AA802D007E4B01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B76524AA802D007E4B01 /* SceneDelegate.swift */; };
 		3DA4B76824AA802D007E4B01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B76724AA802D007E4B01 /* ViewController.swift */; };
 		3DA4B76B24AA802D007E4B01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DA4B76924AA802D007E4B01 /* Main.storyboard */; };
 		3DA4B76D24AA802E007E4B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DA4B76C24AA802E007E4B01 /* Assets.xcassets */; };
 		3DA4B77024AA802E007E4B01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DA4B76E24AA802E007E4B01 /* LaunchScreen.storyboard */; };
+		3DA4B77C24ABB1B1007E4B01 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B77B24ABB1B1007E4B01 /* CustomAnnotation.swift */; };
+		3DBF216E24ACEAC300902EAF /* PublicArt.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 3DBF216D24ACEAC300902EAF /* PublicArt.geojson */; };
+		3DBF217024ACED0000902EAF /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBF216F24ACED0000902EAF /* Artwork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D6B11D324B01EFB0059B792 /* PlaceMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMark.swift; sourceTree = "<group>"; };
 		3DA4B76024AA802D007E4B01 /* MapAndLocationManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapAndLocationManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DA4B76324AA802D007E4B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DA4B76524AA802D007E4B01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +29,9 @@
 		3DA4B76C24AA802E007E4B01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DA4B76F24AA802E007E4B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DA4B77124AA802E007E4B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DA4B77B24ABB1B1007E4B01 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		3DBF216D24ACEAC300902EAF /* PublicArt.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PublicArt.geojson; sourceTree = "<group>"; };
+		3DBF216F24ACED0000902EAF /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,59 @@
 		3DA4B76224AA802D007E4B01 /* MapAndLocationManager */ = {
 			isa = PBXGroup;
 			children = (
-				3DA4B76324AA802D007E4B01 /* AppDelegate.swift */,
-				3DA4B76524AA802D007E4B01 /* SceneDelegate.swift */,
-				3DA4B76724AA802D007E4B01 /* ViewController.swift */,
-				3DA4B76924AA802D007E4B01 /* Main.storyboard */,
-				3DA4B76C24AA802E007E4B01 /* Assets.xcassets */,
-				3DA4B76E24AA802E007E4B01 /* LaunchScreen.storyboard */,
-				3DA4B77124AA802E007E4B01 /* Info.plist */,
+				3DA4B77824AA8064007E4B01 /* Common */,
+				3DA4B77724AA8037007E4B01 /* Controller */,
+				3DA4B77924AA808B007E4B01 /* View */,
+				3DA4B77A24AA8096007E4B01 /* SupportFile */,
 			);
 			path = MapAndLocationManager;
+			sourceTree = "<group>";
+		};
+		3DA4B77724AA8037007E4B01 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3DA4B76724AA802D007E4B01 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3DA4B77824AA8064007E4B01 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3DBF216D24ACEAC300902EAF /* PublicArt.geojson */,
+				3DA4B76324AA802D007E4B01 /* AppDelegate.swift */,
+				3DA4B76524AA802D007E4B01 /* SceneDelegate.swift */,
+				3D6B11D324B01EFB0059B792 /* PlaceMark.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		3DA4B77924AA808B007E4B01 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3DBF217124ACED8300902EAF /* CustomAnnotationView */,
+				3DA4B76924AA802D007E4B01 /* Main.storyboard */,
+				3DA4B76E24AA802E007E4B01 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3DA4B77A24AA8096007E4B01 /* SupportFile */ = {
+			isa = PBXGroup;
+			children = (
+				3DA4B76C24AA802E007E4B01 /* Assets.xcassets */,
+				3DA4B77124AA802E007E4B01 /* Info.plist */,
+			);
+			name = SupportFile;
+			sourceTree = "<group>";
+		};
+		3DBF217124ACED8300902EAF /* CustomAnnotationView */ = {
+			isa = PBXGroup;
+			children = (
+				3DA4B77B24ABB1B1007E4B01 /* CustomAnnotation.swift */,
+				3DBF216F24ACED0000902EAF /* Artwork.swift */,
+			);
+			path = CustomAnnotationView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +178,7 @@
 			files = (
 				3DA4B77024AA802E007E4B01 /* LaunchScreen.storyboard in Resources */,
 				3DA4B76D24AA802E007E4B01 /* Assets.xcassets in Resources */,
+				3DBF216E24ACEAC300902EAF /* PublicArt.geojson in Resources */,
 				3DA4B76B24AA802D007E4B01 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,9 +190,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DBF217024ACED0000902EAF /* Artwork.swift in Sources */,
 				3DA4B76824AA802D007E4B01 /* ViewController.swift in Sources */,
 				3DA4B76424AA802D007E4B01 /* AppDelegate.swift in Sources */,
 				3DA4B76624AA802D007E4B01 /* SceneDelegate.swift in Sources */,
+				3D6B11D424B01EFB0059B792 /* PlaceMark.swift in Sources */,
+				3DA4B77C24ABB1B1007E4B01 /* CustomAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

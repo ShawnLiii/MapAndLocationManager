@@ -29,6 +29,7 @@ class CustomAnnotation: NSObject, MKAnnotation {
         self.title = title
         self.subtitle = subtitle
     }
+
 }
 
 

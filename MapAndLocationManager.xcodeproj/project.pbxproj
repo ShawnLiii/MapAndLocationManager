@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0C854B24B43E9B00979E5E /* ArtWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0C854A24B43E9B00979E5E /* ArtWork.swift */; };
+		3D0C854E24B4404000979E5E /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0C854D24B4404000979E5E /* Service.swift */; };
+		3D0C855324B55D6F00979E5E /* ArtworkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0C855224B55D6F00979E5E /* ArtworkViewModel.swift */; };
+		3D0C855624B56A5E00979E5E /* ArtworkAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D0C855524B56A5E00979E5E /* ArtworkAnnotationView.xib */; };
+		3D643CF024BDF77B004B5152 /* ArtworkAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D643CEF24BDF77B004B5152 /* ArtworkAnnotationView.swift */; };
 		3D6B11D424B01EFB0059B792 /* PlaceMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6B11D324B01EFB0059B792 /* PlaceMark.swift */; };
+		3D6D101624B37838008AAB85 /* CustomAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D6D101524B37838008AAB85 /* CustomAnnotationView.xib */; };
+		3D6D101924B37B11008AAB85 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D101824B37B11008AAB85 /* CustomAnnotationView.swift */; };
 		3DA4B76424AA802D007E4B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B76324AA802D007E4B01 /* AppDelegate.swift */; };
 		3DA4B76624AA802D007E4B01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B76524AA802D007E4B01 /* SceneDelegate.swift */; };
 		3DA4B76824AA802D007E4B01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B76724AA802D007E4B01 /* ViewController.swift */; };
@@ -15,12 +22,18 @@
 		3DA4B76D24AA802E007E4B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DA4B76C24AA802E007E4B01 /* Assets.xcassets */; };
 		3DA4B77024AA802E007E4B01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DA4B76E24AA802E007E4B01 /* LaunchScreen.storyboard */; };
 		3DA4B77C24ABB1B1007E4B01 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B77B24ABB1B1007E4B01 /* CustomAnnotation.swift */; };
-		3DBF216E24ACEAC300902EAF /* PublicArt.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 3DBF216D24ACEAC300902EAF /* PublicArt.geojson */; };
-		3DBF217024ACED0000902EAF /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBF216F24ACED0000902EAF /* Artwork.swift */; };
+		3DBF217024ACED0000902EAF /* ArtworkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBF216F24ACED0000902EAF /* ArtworkAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D0C854A24B43E9B00979E5E /* ArtWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtWork.swift; sourceTree = "<group>"; };
+		3D0C854D24B4404000979E5E /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		3D0C855224B55D6F00979E5E /* ArtworkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkViewModel.swift; sourceTree = "<group>"; };
+		3D0C855524B56A5E00979E5E /* ArtworkAnnotationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtworkAnnotationView.xib; sourceTree = "<group>"; };
+		3D643CEF24BDF77B004B5152 /* ArtworkAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkAnnotationView.swift; sourceTree = "<group>"; };
 		3D6B11D324B01EFB0059B792 /* PlaceMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMark.swift; sourceTree = "<group>"; };
+		3D6D101524B37838008AAB85 /* CustomAnnotationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomAnnotationView.xib; sourceTree = "<group>"; };
+		3D6D101824B37B11008AAB85 /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		3DA4B76024AA802D007E4B01 /* MapAndLocationManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapAndLocationManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DA4B76324AA802D007E4B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DA4B76524AA802D007E4B01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,8 +43,7 @@
 		3DA4B76F24AA802E007E4B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DA4B77124AA802E007E4B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DA4B77B24ABB1B1007E4B01 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
-		3DBF216D24ACEAC300902EAF /* PublicArt.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PublicArt.geojson; sourceTree = "<group>"; };
-		3DBF216F24ACED0000902EAF /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
+		3DBF216F24ACED0000902EAF /* ArtworkAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +57,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D0C854924B43E8400979E5E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3D0C854A24B43E9B00979E5E /* ArtWork.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3D0C854C24B4402400979E5E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				3D0C854D24B4404000979E5E /* Service.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		3D0C855124B55D3D00979E5E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3D0C855224B55D6F00979E5E /* ArtworkViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3D0C855424B56A2A00979E5E /* ArtworkAnnotationView */ = {
+			isa = PBXGroup;
+			children = (
+				3D0C855524B56A5E00979E5E /* ArtworkAnnotationView.xib */,
+				3D643CEF24BDF77B004B5152 /* ArtworkAnnotationView.swift */,
+			);
+			path = ArtworkAnnotationView;
+			sourceTree = "<group>";
+		};
+		3D6D101724B37AE4008AAB85 /* CustomAnnotationView */ = {
+			isa = PBXGroup;
+			children = (
+				3D6D101524B37838008AAB85 /* CustomAnnotationView.xib */,
+				3D6D101824B37B11008AAB85 /* CustomAnnotationView.swift */,
+			);
+			path = CustomAnnotationView;
+			sourceTree = "<group>";
+		};
 		3DA4B75724AA802D007E4B01 = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +118,9 @@
 		3DA4B76224AA802D007E4B01 /* MapAndLocationManager */ = {
 			isa = PBXGroup;
 			children = (
+				3D0C855124B55D3D00979E5E /* ViewModel */,
+				3D0C854C24B4402400979E5E /* Service */,
+				3D0C854924B43E8400979E5E /* Model */,
 				3DA4B77824AA8064007E4B01 /* Common */,
 				3DA4B77724AA8037007E4B01 /* Controller */,
 				3DA4B77924AA808B007E4B01 /* View */,
@@ -83,7 +140,6 @@
 		3DA4B77824AA8064007E4B01 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				3DBF216D24ACEAC300902EAF /* PublicArt.geojson */,
 				3DA4B76324AA802D007E4B01 /* AppDelegate.swift */,
 				3DA4B76524AA802D007E4B01 /* SceneDelegate.swift */,
 				3D6B11D324B01EFB0059B792 /* PlaceMark.swift */,
@@ -94,7 +150,9 @@
 		3DA4B77924AA808B007E4B01 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3DBF217124ACED8300902EAF /* CustomAnnotationView */,
+				3D0C855424B56A2A00979E5E /* ArtworkAnnotationView */,
+				3D6D101724B37AE4008AAB85 /* CustomAnnotationView */,
+				3DBF217124ACED8300902EAF /* CustomAnnotation */,
 				3DA4B76924AA802D007E4B01 /* Main.storyboard */,
 				3DA4B76E24AA802E007E4B01 /* LaunchScreen.storyboard */,
 			);
@@ -110,13 +168,13 @@
 			name = SupportFile;
 			sourceTree = "<group>";
 		};
-		3DBF217124ACED8300902EAF /* CustomAnnotationView */ = {
+		3DBF217124ACED8300902EAF /* CustomAnnotation */ = {
 			isa = PBXGroup;
 			children = (
 				3DA4B77B24ABB1B1007E4B01 /* CustomAnnotation.swift */,
-				3DBF216F24ACED0000902EAF /* Artwork.swift */,
+				3DBF216F24ACED0000902EAF /* ArtworkAnnotation.swift */,
 			);
-			path = CustomAnnotationView;
+			path = CustomAnnotation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,7 +236,8 @@
 			files = (
 				3DA4B77024AA802E007E4B01 /* LaunchScreen.storyboard in Resources */,
 				3DA4B76D24AA802E007E4B01 /* Assets.xcassets in Resources */,
-				3DBF216E24ACEAC300902EAF /* PublicArt.geojson in Resources */,
+				3D6D101624B37838008AAB85 /* CustomAnnotationView.xib in Resources */,
+				3D0C855624B56A5E00979E5E /* ArtworkAnnotationView.xib in Resources */,
 				3DA4B76B24AA802D007E4B01 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,9 +249,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DBF217024ACED0000902EAF /* Artwork.swift in Sources */,
+				3DBF217024ACED0000902EAF /* ArtworkAnnotation.swift in Sources */,
 				3DA4B76824AA802D007E4B01 /* ViewController.swift in Sources */,
+				3D0C854B24B43E9B00979E5E /* ArtWork.swift in Sources */,
+				3D0C855324B55D6F00979E5E /* ArtworkViewModel.swift in Sources */,
+				3D643CF024BDF77B004B5152 /* ArtworkAnnotationView.swift in Sources */,
+				3D6D101924B37B11008AAB85 /* CustomAnnotationView.swift in Sources */,
 				3DA4B76424AA802D007E4B01 /* AppDelegate.swift in Sources */,
+				3D0C854E24B4404000979E5E /* Service.swift in Sources */,
 				3DA4B76624AA802D007E4B01 /* SceneDelegate.swift in Sources */,
 				3D6B11D424B01EFB0059B792 /* PlaceMark.swift in Sources */,
 				3DA4B77C24ABB1B1007E4B01 /* CustomAnnotation.swift in Sources */,

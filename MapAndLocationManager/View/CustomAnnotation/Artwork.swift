@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-class Artwork: NSObject, MKAnnotation {
+class ArtworkAnnotation: NSObject, MKAnnotation {
     let coordinate: CLLocationCoordinate2D
     let title: String?
     let locationName: String?
@@ -24,4 +24,6 @@ class Artwork: NSObject, MKAnnotation {
         self.discipline = discipline
         super.init()
     }
+    
+    
 }

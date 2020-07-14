@@ -14,12 +14,13 @@ private let ReuseIdentifier = "annotation"
 class ViewController: UIViewController {
 
     let locationManager = CLLocationManager()
-    var items = [MKMapItem]()
     var lat = 40.567508
     var long = -105.081794
     var altitude = 0.0
     var accuracy = 0.0
     private var pendingRequestWorkItem: DispatchWorkItem?
+    var artWorks: [ArtworkAnnotation] = []
+    var artworkVM = ArtworkViewModel()
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mapView: MKMapView! {
@@ -33,6 +34,8 @@ class ViewController: UIViewController {
         setupLocationManager()
         setupGesture()
         setupSearchBar()
+        loadAndPlaceArtWorkAnnotations()
+//        processPlacemarks(location: nil, address: "Bei Jing")
     }
 
     func setupLocationManager() {
@@ -53,7 +56,7 @@ class ViewController: UIViewController {
             let locationInView = sender.location(in: mapView)
             let coordinate = mapView.convert(locationInView, toCoordinateFrom: mapView)
             let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-
+            
             processPlacemarks(location: location, address: nil)
         }
     }
@@ -78,19 +81,56 @@ class ViewController: UIViewController {
         self.mapView.addAnnotation(annotation)
     }
     
-    func processPlacemarks(location: CLLocation?, address: String?) {
+    func transferCoordinatesAndAddress(location: CLLocation?, address: String?, transferResultHandler: @escaping (String?,CLLocation?)->()) {
         let geoCoder = CLGeocoder()
-        guard let location = location else { return }
-        geoCoder.reverseGeocodeLocation(location) { [weak self] (placeMarks, error) in
-            guard let completeAddress = placeMarks?.first?.completeAddress, error == nil else { return }
-            self?.addAnnotation(coordinate: location.coordinate, address: completeAddress)
+        
+        if let location = location {
+            geoCoder.reverseGeocodeLocation(location) { (placeMarks, error) in
+                let completeAddress = placeMarks?.first?.completeAddress
+                transferResultHandler(completeAddress,nil)
+            }
         }
-        //TODO: Pass an complete string address and try to fet the co-ordinates using CLGeocoder class. This process is called geo-coding.
-        guard let address = address else { return }
-        geoCoder.geocodeAddressString(address) { [weak self] (placeMarks, error) in
-            guard let location = placeMarks?.first?.location else { return }
-            self?.addAnnotation(coordinate: location.coordinate, address: address)
+        
+        if let address = address {
+            geoCoder.geocodeAddressString(address) { (placeMarks, error) in
+                let location = placeMarks?.first?.location
+                transferResultHandler(nil,location)
+            }
         }
+    }
+    
+    func processPlacemarks(location: CLLocation?, address: String?) {
+        transferCoordinatesAndAddress(location: location, address: address) { (completeAddress, transferedLocation) in
+            if let completeAddress = completeAddress {
+                guard let coordinate = location?.coordinate else { return }
+                self.addAnnotation(coordinate: coordinate, address: completeAddress)
+            }
+            
+            if let transferedCoordinate = transferedLocation?.coordinate {
+                guard let address = address else { return }
+                self.addAnnotation(coordinate: transferedCoordinate, address: address)
+            }
+        }
+    }
+    
+    func findMostAccurateLocationAlert(location: CLLocation) {
+        let alertController = UIAlertController(title: "Find The Most Accurate Location!", message: "This is the most accurate location. \nlatitude: \(location.coordinate.latitude). \nlongtitude: \(location.coordinate.longitude)", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default)
+        
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func loadAndPlaceArtWorkAnnotations() {
+        for artwork in artworkVM.artworks {
+            let artworkAnnotation = ArtworkAnnotation(artwork: artwork, point: (artwork.artloc?.coordinates)!)
+            artWorks.append(artworkAnnotation)
+            
+        }
+//        let validWorks = artworkVM.artworks.compactMap(ArtworkAnnotation.init)
+//        artWorks.append(contentsOf: validWorks)
+        mapView.addAnnotations(artWorks)
+//        mapView.showAnnotations(artWorks, animated: true)
     }
 }
 
@@ -99,16 +139,22 @@ extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //Get the most updated and accurate result then stops the location services.
         guard let lastLocation = locations.last else { return }
-        lat = lastLocation.coordinate.latitude
-        long = lastLocation.coordinate.longitude
-        altitude = lastLocation.altitude
-        accuracy = lastLocation.horizontalAccuracy
+        let locationAge = -(lastLocation.timestamp.timeIntervalSinceNow)
+        
+        if locationAge > 5.0 {
+            print("Old Location \(lastLocation)")
+            return
+        }
+        
+        if lastLocation.horizontalAccuracy < 0 {
+            self.locationManager.stopUpdatingLocation()
+            self.locationManager.startUpdatingLocation()
+            return
+        }
+        
+        findMostAccurateLocationAlert(location: lastLocation)
     }
     
-//    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-//
-//    }
-//
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Can't get location")
     }
@@ -125,21 +171,31 @@ extension ViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        guard let annotation = annotation as? CustomAnnotation else { return nil }
+        guard let customAnnotation = annotation as? CustomAnnotation else { return nil }
         //TODO: Custom Annotation view as we disussed in class
         var view: MKMarkerAnnotationView
         
         if let dequeueView = mapView.dequeueReusableAnnotationView(withIdentifier: ReuseIdentifier) as? MKMarkerAnnotationView {
-            dequeueView.annotation = annotation
+            dequeueView.annotation = customAnnotation
             view = dequeueView
         } else {
-            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: ReuseIdentifier)
+            view = MKMarkerAnnotationView(annotation: customAnnotation, reuseIdentifier: ReuseIdentifier)
             view.canShowCallout = true
             view.calloutOffset = CGPoint(x: -5, y: 5)
-            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-            let leftIconView = UIImageView(frame: CGRect(x: 0, y: 0, width: 53, height: 53))
-            leftIconView.image = UIImage(named: "dog")
-            view.leftCalloutAccessoryView = leftIconView
+            
+            let customCallOutView = CustomAnnotationView()
+            
+            
+            customCallOutView.displayAddressHandler = {
+                customCallOutView.titleLabel.text = "Address"
+                customCallOutView.displayLabel.text = customAnnotation.subtitle
+            }
+            
+            customCallOutView.displayCoordinateHandler = {
+                customCallOutView.titleLabel.text = "Coordinate"
+                customCallOutView.displayLabel.text = customAnnotation.title
+            }
+            view.detailCalloutAccessoryView = customCallOutView
         }
         return view
     }
@@ -148,12 +204,11 @@ extension ViewController: MKMapViewDelegate {
         guard let annotation = view.annotation as? CustomAnnotation else { return }
         let name = annotation.subtitle
         let coordinate = annotation.title
-        
+
         let alertController = UIAlertController(title: name, message: coordinate, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alertController, animated: true)
     }
-    
     
 }
 
@@ -166,18 +221,18 @@ extension ViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         //TODO: Search Part
-        //Cancel the pending item
+        //Cancel/Invalidate the pending item if user type another letter within 3 seconds
         pendingRequestWorkItem?.cancel()
         // Get search text and remove whitespace and newlines
         guard let searchText = searchBar.text?.trimmingCharacters(in: .whitespaces), !searchText.isEmpty else { return }
-        // Wait for user to stop typing for 3 seconds else invalidate - dispatchWorkitem, timer
+        //Creating a new dispatchWorkItem that will get dispatch later
         let workItem = DispatchWorkItem { [weak self] in
             print(searchText)
             self?.performSearch(using: searchText)
         }
-        // Save the new work item and execute it after 3 seconds
+        // Save the new work item
         pendingRequestWorkItem = workItem
-        // Then make a request else invalidate
+        // execute it after 3 seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: workItem)
     }
     
@@ -187,7 +242,8 @@ extension ViewController: UISearchBarDelegate {
     }
     
     func performSearch(using searchText: String) {
-        items.removeAll()
+        //TODO: Annotation Cluster - self check
+        
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = searchText
         request.region = self.mapView.region
